@@ -1,0 +1,16 @@
+<%= form_for @flat do |f| %>
+  <h1>Edit flat</h1>
+  <%= f.label :name, class:"control-label required" %>
+  <%= f.text_field :name, class: "form-control mb-2" %>
+  <%= f.label :address, class:"control-label required" %>
+  <%= f.text_field :address, class: "form-control mb-2" %>
+  <%= f.label :image_url, class:"control-label required" %>
+  <%= f.text_field :image_url, class: "form-control mb-2" %>
+  <%= f.label :description, class: "control-label required" %>
+  <%= f.text_area :description, class: "form-control mb-4 large", rows: "5" %>
+  <%= f.label :number_of_guests, class: "control-label required" %>
+  <%= f.number_field :number_of_guests, class: "form-control mb-2" %>
+  <%= f.label :price_per_night, class: "control-label required" %>
+  <%= f.number_field :price_per_night, class: "form-control mb-2" %>
+  <%= f.submit class: "btn btn-primary mt-3" %>
+<% end %>

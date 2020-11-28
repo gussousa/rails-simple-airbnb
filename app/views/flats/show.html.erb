@@ -1,0 +1,52 @@
+<div class="img_large" style="background-image: url('<%= @flat.image_url %>')"></div>
+<div class="container mt-n5">
+  <div class="row">
+    <div class="col-8">
+      <div class="flat-show-card">
+        <h1><%= @flat.name %></h1>
+        <p class="flat-show-address"><%= @flat.address %></p>
+      </div>
+      <div class="flat-show-card">
+        <h3>A bit more about this flat...</h3>
+        <p><%= @flat.description %></p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="flat-show-card">
+        <h5>Book this place!</h5>
+        <form action="">
+          <div class="input-group">
+            <span class="input-group-addon">From:</span>
+            <input type="text" name="" id="" class="form-control">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-addon">To:</span>
+            <input type="text" name="" id="" class="form-control">
+          </div>
+          <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
+        </form>
+      </div>
+      <div class="flat-show-card">
+        <h3>Details</h3>
+        <div class="d-flex">
+          <i class="material-icons mr-2">people</i>
+          <span><%= @flat.number_of_guests %></span>
+        <div class="d-flex ml-3">
+            <i class="material-icons mr-2">euro_symbol</i> <%= @flat.price_per_night %>
+          </div>  
+        </div>
+      </div>
+      <div class="flat-show-card">
+        <div class="d-flex align-items-center justify-content-between">
+          <h6 class="no mr-5">Share</h6>
+          <div class="d-flex">
+            <i class="fa fa-facebook-square fa-2x mr-2"></i>
+            <i class="fa fa-twitter-square fa-2x mr-2"></i>
+            <i class="fa fa-pinterest-square fa-2x mr-2"></i>
+            <i class="fa fa-envelope-square fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
