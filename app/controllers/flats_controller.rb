@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    @flats_query = Flat.where("name like '%#{params[:query]}%'") unless params[:query].nil?
   end
 
   def show

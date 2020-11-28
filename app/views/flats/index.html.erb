@@ -4,45 +4,89 @@
       <h1>All our Flats</h1>
     </div>
   </div>
-  <div class="row">
+  <% if params[:query].nil? %>
+    <div class="row">
       <div class="col">
-      <p> <%= @flats.count %> flats.</p>
+        <p> <%= @flats.count %> flats.</p>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <% @flats.each do |flat| %>
-      <div class="col-4 ">
-        <div class="card flat-card mr-2 mb-2">
-          <div class="flat-card-image" style="background-image: url('<%= flat.image_url %>')"></div>
-          <div class="flat-card-content p-3">
-            <div class="flat-card-title">
-              <h4><%= flat.name %></h4>
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-4 ">
+          <div class="card flat-card mr-2 mb-2">
+            <div class="flat-card-image" style="background-image: url('<%= flat.image_url %>')"></div>
+            <div class="flat-card-content p-3">
+              <div class="flat-card-title">
+                <h4><%= flat.name %></h4>
+              </div>
+              <p><%= flat.description %></p>
+              <hr>
+              <div class="d-flex">
+                <div class="d-flex">
+                  <i class="material-icons mr-2">people</i>
+                  <span><%= flat.number_of_guests %></span>
+                <div class="d-flex">
+                  <i class="material-icons ml-2">attach_money</i>
+                  <span><%= flat.price_per_night %></span>
+                </div>
+                </div>
+              </div>
             </div>
-            <p><%= flat.description %></p>
             <hr>
-            <div class="d-flex">
-              <div class="d-flex">
-                <i class="material-icons mr-2">people</i>
-                <span><%= flat.number_of_guests %></span>
-              <div class="d-flex">
-                <i class="material-icons ml-2">attach_money</i>
-                <span><%= flat.price_per_night %></span>
-              </div>
-              </div>
+            <div class="flat-card-actions p-3 mt-n3">
+              <%= link_to 'More info ', flat_path(flat) %> |
+              <%= link_to 'Edit ', edit_flat_path(flat) %> |
+              <%= link_to 'Remove', 
+                          flat_path(flat),
+                          method: :delete,
+                          class: "red",
+                          data: { confirm: "Are you sure? " } %>
             </div>
-          </div>
-          <hr>
-          <div class="flat-card-actions p-3 mt-n3">
-            <%= link_to 'More info ', flat_path(flat) %> |
-            <%= link_to 'Edit ', edit_flat_path(flat) %> |
-            <%= link_to 'Remove', 
-                        flat_path(flat),
-                        method: :delete,
-                        class: "red",
-                        data: { confirm: "Are you sure? " } %>
           </div>
         </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col">
+        <p>You searched for <strong><%= params[:query] %></strong>. <%= @flats_query.count %> flats found.</p>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <div class="row">
+      <% @flats_query.each do |flat| %>
+        <div class="col-4 ">
+          <div class="card flat-card mr-2 mb-2">
+            <div class="flat-card-image" style="background-image: url('<%= flat.image_url %>')"></div>
+            <div class="flat-card-content p-3">
+              <div class="flat-card-title">
+                <h4><%= flat.name %></h4>
+              </div>
+              <p><%= flat.description %></p>
+              <hr>
+              <div class="d-flex">
+                <div class="d-flex">
+                  <i class="material-icons mr-2">people</i>
+                  <span><%= flat.number_of_guests %></span>
+                <div class="d-flex">
+                  <i class="material-icons ml-2">attach_money</i>
+                  <span><%= flat.price_per_night %></span>
+                </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="flat-card-actions p-3 mt-n3">
+              <%= link_to 'More info ', flat_path(flat) %> |
+              <%= link_to 'Edit ', edit_flat_path(flat) %> |
+              <%= link_to 'Remove', 
+                          flat_path(flat),
+                          method: :delete,
+                          class: "red",
+                          data: { confirm: "Are you sure? " } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
